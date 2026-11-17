@@ -1,0 +1,155 @@
+/* =====================================================
+   SmartSpendAI Admin Theme
+   ===================================================== */
+
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --secondary-color: #0f172a;
+  --background-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-color: #334155;
+  --text-light: #64748b;
+  --accent-ai: #06b6d4;
+  --border-color: #e2e8f0;
+}
+
+/* Sidebar Brand */
+.menu .app-brand.demo {
+  height: 72px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-brand-link {
+  text-decoration: none;
+}
+
+.app-brand-text.demo {
+  font-size: 1.55rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -.3px;
+  color: var(--secondary-color);
+}
+
+.app-brand-text.demo span {
+  color: var(--primary-color);
+}
+
+/* Sidebar */
+.bg-menu-theme {
+  background: #fff !important;
+  border-right: 1px solid var(--border-color);
+}
+
+.bg-menu-theme .menu-inner>.menu-item.active>.menu-link {
+  background: rgba(79,70,229,.12);
+  color: var(--primary-color);
+  border-radius: 10px;
+}
+
+.bg-menu-theme .menu-link:hover {
+  background: rgba(79,70,229,.08);
+  color: var(--primary-color);
+}
+
+.bg-menu-theme .menu-link {
+  color: var(--text-color);
+  transition: .3s;
+}
+
+/* Navbar */
+.layout-navbar {
+  background: rgba(255,255,255,.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Cards */
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(15,23,42,.05);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Tables */
+.table thead {
+  background: #eef2ff;
+}
+
+.table thead th {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+  border-radius: 10px;
+  border-color: var(--border-color);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 .2rem rgba(79,70,229,.15);
+}
+
+/* Dashboard Stat Cards */
+.dashboard-card {
+  border-left: 5px solid var(--primary-color);
+}
+
+.dashboard-card.ai {
+  border-left-color: var(--accent-ai);
+}
+
+/* Badges */
+.badge-primary {
+  background: var(--primary-color);
+}
+
+.badge-success {
+  background: #22c55e;
+}
+
+.badge-danger {
+  background: #ef4444;
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}

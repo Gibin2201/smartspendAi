@@ -1,0 +1,555 @@
+/* ==========================================================================
+   1. GLOBAL STYLES & VARIABLES
+   ========================================================================== */
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --secondary-color: #0f172a;
+    --background-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #334155;
+    --text-light: #64748b;
+    --accent-ai: #06b6d4;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --border-color: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ==========================================================================
+   2. NAVIGATION BAR
+   ========================================================================== */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+.logo span { color: var(--primary-color); }
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text-color); 
+    font-weight: 500; 
+    transition: color 0.3s; 
+}
+.nav-links a.active, .nav-links a:hover { color: var(--primary-color); }
+
+.nav-buttons { 
+    display: flex; 
+    gap: 1rem; 
+    align-items: center; 
+}
+
+.menu-toggle { 
+    display: none; 
+    background: none; 
+    border: none; 
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    color: var(--secondary-color); 
+    padding: 0.5rem;
+    z-index: 100000;
+}
+
+/* ==========================================================================
+   3. BUTTONS & TYPOGRAPHY
+   ========================================================================== */
+.btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block;
+}
+.btn-primary { background: var(--primary-color); color: white; border: none; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-secondary { background: transparent; color: var(--secondary-color); border: none; }
+.btn-outline { border: 1px solid var(--border-color); color: var(--secondary-color); background: transparent; }
+.btn-large { padding: 0.8rem 2rem; font-size: 1.1rem; }
+.btn-block { width: 100%; text-align: center; display: block; }
+
+.text-gradient { 
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-ai)); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+
+/* ==========================================================================
+   4. HERO & SECTION BASELINES
+   ========================================================================== */
+.hero-section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+.hero-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.hero-content h1 { font-size: 3rem; line-height: 1.2; color: var(--secondary-color); margin-bottom: 1.5rem; }
+.hero-content p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem; }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-image img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); object-fit: cover; }
+
+.section-padding { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-header h2 { font-size: 2.2rem; color: var(--secondary-color); }
+.section-header p { color: var(--text-light); margin-top: 0.5rem; }
+
+/* ==========================================================================
+   5. MOCKUP INTERFACE LAYOUT (DASHBOARD PREVIEW)
+   ========================================================================== */
+.main-layout { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; display: grid; grid-template-columns: 240px 1fr; gap: 2rem; }
+.sidebar { background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); height: fit-content; }
+.sidebar-user { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); }
+.sidebar-user .avatar-placeholder { width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--accent-ai)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+.sidebar-user h4 { font-size: 0.95rem; color: var(--secondary-color); }
+.sidebar-user p { font-size: 0.8rem; color: var(--text-light); }
+.sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.sidebar-menu li a { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; text-decoration: none; color: var(--text-color); border-radius: 6px; transition: all 0.2s; font-weight: 500; }
+.sidebar-menu li.active a, .sidebar-menu li a:hover { background: #f1f5f9; color: var(--primary-color); font-weight: 600; }
+
+.content-area { display: flex; flex-direction: column; gap: 2rem; }
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.ai-badge { background: #ecfeff; color: var(--accent-ai); padding: 0.4rem 1rem; border-radius: 50px; font-weight: 600; font-size: 0.85rem; border: 1px solid #cffafe; display: inline-flex; align-items: center; gap: 0.5rem; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+.stat-card { background: var(--card-bg); padding: 1.25rem 1rem; border-radius: 12px; border: 1px solid var(--border-color); }
+.stat-card h3 { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+.stat-amount { font-size: 1.4rem; font-weight: 700; color: var(--success); margin-top: 0.25rem; }
+.stat-card.negative .stat-amount { color: var(--danger); }
+.ai-insight-card { background: linear-gradient(135deg, #e0f2fe, #f0fdfa); border: 1px solid #bae6fd; padding: 1.25rem; border-radius: 12px; }
+.ai-insight-card h3 { color: var(--primary-color); font-weight: 600; font-size: 0.95rem; }
+.ai-insight-card p { font-size: 0.85rem; font-style: italic; margin-top: 0.5rem; color: #0369a1; }
+
+.tracker-interface { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.card { background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); }
+.card h3 { margin-bottom: 1.5rem; color: var(--secondary-color); font-size: 1.2rem; border-bottom: 2px solid var(--background-color); padding-bottom: 0.5rem; }
+
+.expense-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.expense-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: var(--background-color); border-radius: 6px; border-left: 4px solid var(--primary-color); }
+.expense-item.danger-left { border-left-color: var(--danger); }
+.expense-details h4 { font-size: 0.95rem; color: var(--secondary-color); }
+.expense-details span { font-size: 0.75rem; color: var(--text-light); background: #e2e8f0; padding: 0.1rem 0.4rem; border-radius: 4px; }
+.expense-val { font-weight: 600; color: var(--danger); display: flex; align-items: center; }
+
+/* ==========================================================================
+   6. RESPONSIVE UTILITY GRIDS & TIMELINE MODULE
+   ========================================================================== */
+.responsive-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+.responsive-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+
+.timeline-container { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; text-align: center; }
+.timeline-node { padding: 1.25rem; min-width: 135px; background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border-color); font-weight: 600; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+.timeline-arrow { color: var(--primary-color); font-size: 1.25rem; }
+
+/* ==========================================================================
+   7. AI MODULES SECTION (Small & Side-by-Side)
+   ========================================================================== */
+.ai-modules-wrapper {
+    max-width: 1000px; /* Constrained wrapper for nice proportions */
+    margin: 0 auto;
+}
+
+.ai-modules-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.ai-modules-header h2 {
+    display: inline-block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #14532d;
+    background-color: #f0fdf4;
+    border: 3px solid #22c55e;
+    border-radius: 12px;
+    padding: 0.4rem 2rem;
+    letter-spacing: 1px;
+}
+
+/* Creating the side-by-side layout grid */
+.ai-modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.ai-module-card {
+    display: flex;
+    flex-direction: column; /* Stacked icon and text interior for compact fit */
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    border: 2px solid;
+    gap: 1.25rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+}
+
+.module-icon {
+    font-size: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.module-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid;
+    display: inline-block;
+}
+
+.module-content p {
+    font-size: 0.95rem;
+    color: #1e293b;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Theme Adjustments */
+.module-blue {
+    background-color: #f4f8ff;
+    border-color: #3b82f6;
+}
+.module-blue .module-icon { color: #1d4ed8; }
+.module-blue .module-content h3 { color: #1e3a8a; border-bottom-color: rgba(59, 130, 246, 0.4); }
+
+.module-purple {
+    background-color: #fcf5ff;
+    border-color: #a855f7;
+}
+.module-purple .module-icon { color: #6b21a8; }
+.module-purple .module-content h3 { color: #4c1d95; border-bottom-color: rgba(168, 85, 247, 0.4); }
+
+/* ==========================================================================
+   8. ACCORDION (FAQ MODULE)
+   ========================================================================== */
+.faq-wrapper { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+.faq-details { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem 1.5rem; cursor: pointer; transition: background 0.2s; }
+.faq-details summary { font-weight: 600; color: var(--secondary-color); outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.faq-details summary::-webkit-details-marker { display: none; }
+.faq-details summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; color: var(--text-light); transition: transform 0.2s; }
+.faq-details[open] summary::after { transform: rotate(180deg); }
+.faq-details p { margin-top: 0.75rem; color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+
+/* ==========================================================================
+   9. ULTRA-COMPACT CONTACT BLOCK
+   ========================================================================== */
+.contact-section { padding: 3rem 2rem; background: var(--secondary-color); color: white; }
+.contact-wrapper { max-width: 950px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 2.5rem; align-items: center; }
+.contact-info { display: flex; flex-direction: column; gap: 1rem; }
+.contact-info h2 { font-size: 1.7rem; color: white; }
+.contact-info p.sub { color: #94a3b8; font-size: 0.9rem; margin-top: -0.5rem; }
+.contact-meta-list { display: flex; flex-direction: column; gap: 0.5rem; color: #cbd5e1; font-size: 0.85rem; list-style: none; }
+.contact-meta-list li { display: flex; align-items: center; gap: 0.75rem; }
+.contact-meta-list i { color: var(--accent-ai); width: 14px; text-align: center; }
+.mini-map-frame { width: 100%; height: 85px; background: #1e293b; border-radius: 6px; border: 1px solid #334155; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 0.75rem; gap: 0.5rem; }
+
+.contact-form { display: flex; flex-direction: column; gap: 0.75rem; background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+.form-row-twin { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 0.65rem 0.85rem; background: #1e293b; border: 1px solid #334155; color: white; border-radius: 6px; outline: none; font-size: 0.85rem; transition: border 0.2s; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--primary-color); }
+.contact-form textarea { resize: none; }
+
+/* ==========================================================================
+   10. FOOTER ARCHITECTURE
+   ========================================================================== */
+.footer { background: #0b0f19; color: #94a3b8; padding: 4rem 2rem 1.5rem; border-top: 1px solid #1e293b; }
+.footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-container h3 { color: white; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+.footer-container h4 { color: white; margin-bottom: 1.25rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.footer-container ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-container ul a { color: #94a3b8; text-decoration: none; transition: color 0.2s; font-size: 0.9rem; }
+.footer-container ul a:hover { color: white; }
+.footer-contact-info { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; }
+.social-icons { display: flex; gap: 1rem; margin-top: 1.25rem; }
+.social-icons a { color: #94a3b8; font-size: 1.2rem; transition: color 0.2s; }
+.social-icons a:hover { color: var(--accent-ai); }
+.footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 1.5rem; border-top: 1px solid #1e293b; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom p { color: #64748b; }
+
+/* ==========================================================================
+   11. RESPONSIVE MEDIA QUERIES (SIDE-DRAWER NAVIGATION & LAYOUTS)
+   ========================================================================== */
+@media(max-width: 1100px) {
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    .main-layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+}
+
+@media(max-width: 992px) {
+    .hero-container, .tracker-interface, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content { text-align: center; }
+    .hero-cta { justify-content: center; }
+    .timeline-arrow { transform: rotate(90deg); margin: 0.25rem 0; }
+    .timeline-container { flex-direction: column; }
+}
+
+/* MOBILE SIDE-DRAWER NAVIGATION & GENERAL 768px BREAKPOINT */
+@media (max-width: 768px) {
+    /* Menu Toggle Icon */
+    .menu-toggle {
+        display: block !important;
+        position: relative;
+        z-index: 100000;
+    }
+
+    /* Side Drawer Layout */
+    .nav-menu {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -320px;
+        width: 280px;
+        height: 100vh;
+        background: #ffffff;
+        padding: 5rem 2rem 2rem;
+        box-shadow: -10px 0 25px rgba(0, 0, 0, 0.15);
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: none;
+        border-left: 1px solid var(--border-color);
+        gap: 2rem;
+        z-index: 99999;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        right: 0 !important;
+    }
+
+    .nav-menu .nav-links,
+    .nav-menu .nav-buttons {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-menu .nav-links {
+        text-align: left;
+        gap: 1.5rem;
+    }
+
+    .nav-menu .nav-links a {
+        font-size: 1.05rem;
+        display: block;
+        width: 100%;
+    }
+
+    .nav-menu .nav-buttons {
+        gap: 0.75rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .nav-menu .nav-buttons .btn {
+        width: 100%;
+        text-align: center;
+        display: block;
+        padding: 0.75rem;
+    }
+
+    /* AI Modules Mobile Fixes (Stack neatly instead of side-by-side) */
+    .ai-modules-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ai-modules-header h2 {
+        font-size: 1.8rem;
+        padding: 0.4rem 1.5rem;
+    }
+
+    /* Other Responsive Layout Adjustments */
+    .footer-container { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-bottom { flex-direction: column; text-align: center; align-items: center; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .form-row-twin { grid-template-columns: 1fr; }
+}
+
+@media(max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .hero-content h1 { font-size: 2rem; }
+}
+
+/* ==========================================================================
+   12. SIMPLE AMBIENT BACKGROUND MONEY FLOW (NON-INTRUSIVE)
+   ========================================================================== */
+.money-rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0; /* Strictly behind all content */
+    overflow: hidden;
+}
+
+/* Ensure page content sits cleanly in front of background money */
+nav, header, section, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Floating ambient money items */
+.money-item {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    pointer-events: none;
+    user-select: none;
+    opacity: var(--item-opacity, 0.22);
+    animation: simpleMoneyFall linear infinite;
+    will-change: transform, top;
+}
+
+/* Subtle bank note */
+.money-item.bill {
+    width: 82px;
+    height: 40px;
+}
+
+.money-item.bill svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 3px;
+}
+
+/* Soft gold coin - visibly spinning in 3D */
+.money-item.coin {
+    width: 38px;
+    height: 38px;
+    filter: drop-shadow(0 4px 10px rgba(217, 119, 6, 0.3));
+    perspective: 800px;
+}
+
+.money-item.coin svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    animation: coinSpinSlow 4s linear infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes coinSpinSlow {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Ambient currency symbol (₹, $, €) */
+.money-item.symbol {
+    font-size: 26px;
+    font-weight: 700;
+    color: #10b981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.money-item.symbol.gold {
+    color: #f59e0b;
+}
+
+/* Slow, gentle downward drift with subtle drift angle */
+@keyframes simpleMoneyFall {
+    0% {
+        top: -100px;
+        transform: translateX(0px) rotate(var(--rot-start, -8deg));
+    }
+    50% {
+        transform: translateX(var(--sway, 25px)) rotate(var(--rot-mid, 8deg));
+    }
+    100% {
+        top: calc(100vh + 100px);
+        transform: translateX(calc(var(--sway, 25px) * -0.6)) rotate(var(--rot-end, -12deg));
+    }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .money-rain-container {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .money-item.bill {
+        width: 65px;
+        height: 32px;
+    }
+    .money-item.coin {
+        width: 30px;
+        height: 30px;
+    }
+    .money-item.symbol {
+        font-size: 20px;
+    }
+}
